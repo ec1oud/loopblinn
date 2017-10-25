@@ -11,12 +11,12 @@ import (
 	"runtime"
 	"time"
 
-	"github.com/davecheney/profile"
+	"github.com/pkg/profile"
 	"github.com/go-gl/gl/v4.1-core/gl"
 	"github.com/go-gl/glfw/v3.1/glfw"
 	"github.com/go-gl/mathgl/mgl32"
 
-	"code.google.com/p/freetype-go/freetype/truetype"
+	"github.com/horsley/freetype-go/freetype/truetype"
 
 	"github.com/Mischanix/loopblinn/cdt"
 )
@@ -628,10 +628,9 @@ func main() {
 	window.SetKeyCallback(onKey)
 	window.SetCursorPosCallback(onCursorPos)
 
-	loadFont("SeoulNamsan-Light.ttf")
+	loadFont("/usr/share/fonts/TTF/Gentium-I.ttf") //SeoulNamsan-Light.ttf")
 	startTime := glfw.GetTime()
-	profile.CPUProfile.ProfilePath = "."
-	prof := profile.Start(profile.CPUProfile)
+	prof := profile.Start(profile.CPUProfile, profile.ProfilePath("."))
 	for i := 0; i < 100; i++ {
 		loadGlyph('께')
 		loadGlyph('c')
